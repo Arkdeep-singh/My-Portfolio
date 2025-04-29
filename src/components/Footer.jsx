@@ -12,7 +12,7 @@ function Footer() {
           </p>
           <div className="mt-4 flex justify-center space-x-6 text-2xl">
             <a
-              href="https://www.linkedin.com/in/naira-pawan-b2ba592ba/"
+              href="https://www.linkedin.com/in/naira-Abhishek-b2ba592ba/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"
@@ -20,7 +20,7 @@ function Footer() {
               <FaLinkedin />
             </a>
             <a
-              href="https://github.com/NairaPawan"
+              href="https://github.com/NairaAbhishek"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white"

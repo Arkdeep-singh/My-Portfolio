@@ -25,7 +25,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-lg md:text-xl text-gray-700 mb-4">
-          Greetings, I am <span className="text-blue-600 font-semibold">Pawan</span>, a passionate and results-driven full-stack developer specializing in both front-end and back-end development. I am committed to building high-quality, scalable web applications that deliver meaningful impact and exceptional user experiences.
+          Greetings, I am <span className="text-blue-600 font-semibold">Abhishek</span>, a passionate and results-driven full-stack developer specializing in both front-end and back-end development. I am committed to building high-quality, scalable web applications that deliver meaningful impact and exceptional user experiences.
           </p>
           <p className="text-lg md:text-xl text-gray-700 mb-4">
             With a focus on clean, maintainable code, I strive to use the best technologies for each project and work

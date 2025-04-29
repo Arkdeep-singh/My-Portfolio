@@ -17,7 +17,7 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Welcome to Pawan's Portfolio
+            Welcome to Abhishek's Portfolio
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
