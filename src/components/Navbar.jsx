@@ -7,14 +7,15 @@ function Navbar() {
       {/* Background Gradient behind Navbar */}
       <div className="absolute inset-x-0 top-0 h-[160px] bg-gradient-to-br from-blue-50 via-white to-blue-100 blur-3xl opacity-70"></div>
 
-      <div className="container mx-auto px-6 flex justify-between items-center relative z-10">
+      {/* Centered nav container */}
+      <div className="container mx-auto px-6 flex justify-center relative z-10">
         <motion.nav
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="bg-white bg-opacity-80 rounded-xl p-6 shadow-md w-full max-w-6xl"
         >
-          <ul className="flex justify-center space-x-10 text-gray-800 font-medium">
+          <ul className="flex justify-center flex-wrap gap-6 text-gray-800 font-medium">
             <li>
               <a href="#home" className="hover:text-blue-600 transition duration-300">
                 Home
