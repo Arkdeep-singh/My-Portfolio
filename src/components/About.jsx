@@ -1,5 +1,6 @@
 import React from "react";
-import { asset } from "../assets/index/";
+import { asset } from "../assets";
+import cv from "../assets/cv.pdf";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -14,10 +15,18 @@ const About = () => {
       id="about"
       className="relative py-16 md:py-24 bg-gradient-to-br from-white via-blue-50 to-white overflow-hidden"
     >
-      {/* Background elements remain same */}
+      {/* Animated Background Elements */}
+      <motion.div
+        className="absolute w-96 h-96 bg-blue-100 rounded-full -top-48 -left-48 blur-[100px] opacity-20"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.3, 0.2],
+        }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
-        {/* Text Content - Order changes on mobile */}
+        {/* Text Content - Left Side */}
         <motion.div
           className="lg:w-1/2 space-y-6 md:space-y-8 order-2 lg:order-1"
           initial="hidden"
@@ -43,6 +52,7 @@ const About = () => {
             />
           </div>
 
+          {/* Content Card */}
           <motion.div
             className="bg-white/50 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-gray-200 shadow-lg"
             variants={textVariants}
@@ -66,12 +76,13 @@ const About = () => {
               <span className="text-blue-600">maintainable architecture</span>.
             </p>
 
+            {/* Download CV Button */}
             <motion.a
-              href={asset.cv}
+              href={cv} // ✅ Corrected download link
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 px-6 py-3 w-full md:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all text-sm md:text-base"
+              className="inline-flex items-center justify-center gap-3 px-6 py-3 w-full md:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl transition-all text-sm md:text-base cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +101,7 @@ const About = () => {
           </motion.div>
         </motion.div>
 
-        {/* Image Section - Order changes on mobile */}
+        {/* Image Section - Right Side */}
         <motion.div
           className="lg:w-1/2 flex justify-center relative order-1 lg:order-2 mb-8 lg:mb-0"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -108,14 +119,14 @@ const About = () => {
               transition={{ type: "spring", stiffness: 300 }}
             />
 
-            {/* Floating Tech Badge - Mobile Positioning */}
-            <motion.div
-              className="absolute md:-right-20 -bottom-8 md:top-1/2 md:-translate-y-1/2 right-0 z-20 bg-white/90 backdrop-blur-sm p-3 md:p-4 rounded-lg md:rounded-xl shadow-md md:shadow-lg border border-gray-200 w-[220px] md:w-auto"
+            {/* Typewriter Effect Container */}
+            {/* <motion.div
+              className="absolute md:-right-10 lg:-right-20 -bottom-8 md:top-1/2 md:-translate-y-1/2 right-0 z-20 bg-white/90 backdrop-blur-sm px-2 md:px-3 rounded-md shadow border border-gray-200 w-fit max-w-full"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <div className="text-sm md:text-lg font-medium text-gray-700">
+              <div className="text-sm md:text-base font-medium text-gray-700 leading-tight tracking-tight whitespace-nowrap p-0 m-0">
                 <Typewriter
                   words={[
                     "Web Development",
@@ -131,7 +142,7 @@ const About = () => {
                   delaySpeed={2000}
                 />
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Animated Ring */}
             <motion.div
@@ -147,7 +158,7 @@ const About = () => {
               }}
             />
 
-            {/* Floating Particles - Reduced on mobile */}
+            {/* Floating Particles */}
             {[...Array(10)].map((_, i) => (
               <motion.div
                 key={i}
