@@ -1,123 +1,183 @@
-import React from "react";
-import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import { FiArrowUp } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-function Footer() {
+const Footer = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  let scrollTimeout;
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleScroll = () => {
+    setShowScrollButton(window.scrollY > 200);
+    setIsScrolling(true);
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => setIsScrolling(false), 500);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const footerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-400 py-12 mt-12">
-      <div className="container mx-auto px-6 text-center">
-        {/* Footer Header */}
-        <motion.h2
-          className="text-3xl md:text-4xl text-white mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Let's Connect and Build Something Innovative!
-        </motion.h2>
+    <footer className="relative bg-gradient-to-b from-gray-900 to-gray-800 text-gray-300 pt-20 pb-12">
+      {/* Back to Top Button */}
+      <motion.button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 p-4 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-50"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{
+          opacity: showScrollButton && !isScrolling ? 1 : 0,
+          y: showScrollButton && !isScrolling ? 0 : 100,
+        }}
+        transition={{ type: "spring", stiffness: 300 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <FiArrowUp className="text-2xl text-white" />
+      </motion.button>
 
-        {/* Quick Links */}
+      <div className="container mx-auto px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+          variants={footerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          <a
-            href="#home"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            About
-          </a>
-          <a
-            href="#projects"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            Projects
-          </a>
-          <a
-            href="#skills"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            Skills
-          </a>
-          <a
-            href="#achievements"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            Achievements
-          </a>
-          <a
-            href="#certificates"
-            className="text-gray-300 hover:text-blue-600 transition duration-300"
-          >
-            Certificates
-          </a>
-        </motion.div>
+          {/* Brand Section */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Abhishek Kumar
+            </h3>
+            <p className="text-gray-400">
+              Full-stack developer passionate about creating impactful solutions
+              and open-source contributions.
+            </p>
+            <div className="flex space-x-6 text-xl">
+              <motion.a
+                href="https://www.linkedin.com/in/abhishek6725/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-blue-400 transition-colors"
+                whileHover={{ y: -2 }}
+              >
+                <FaLinkedin />
+              </motion.a>
+              <motion.a
+                href="https://github.com/Abhishek6725"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-gray-100 transition-colors"
+                whileHover={{ y: -2 }}
+              >
+                <FaGithub />
+              </motion.a>
+            </div>
+          </motion.div>
 
-        {/* Contact Information */}
-        <motion.div
-          className="mb-8 space-y-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-gray-300">+91 7984352345</p>
-          <p className="text-gray-300">Abshiekkumar@gmail.com</p>
-          <p className="text-gray-300">Phagwara, Punjab, INDIA</p>
-        </motion.div>
+          {/* Quick Links */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+            <ul className="space-y-3">
+              {[
+                "Home",
+                "About",
+                "Skills",
+                "Projects",
+                "Achievements",
+                "Certificates",
+                "Contact",
+              ].map((link) => (
+                <motion.li
+                  key={link}
+                  whileHover={{ x: 5 }}
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  <a
+                    href={`#${link.toLowerCase()}`}
+                    className="block cursor-pointer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .querySelector(`#${link.toLowerCase()}`)
+                        ?.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                    }}
+                  >
+                    {link}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
 
-        {/* Social Media Icons */}
-        <motion.div
-          className="flex justify-center space-x-6 text-3xl mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <a
-            href="https://www.linkedin.com/in/your-linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white hover:text-3xl transition duration-300 transform hover:scale-110"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://github.com/your-github"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white hover:text-3xl transition duration-300 transform hover:scale-110"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://twitter.com/your-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white hover:text-3xl transition duration-300 transform hover:scale-110"
-          >
-            <FaTwitter />
-          </a>
+          {/* Contact Info */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <h4 className="text-lg font-semibold text-white">Get in Touch</h4>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <FaMapMarkerAlt className="text-blue-400" />
+                <span>Phagwara, Punjab, INDIA</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaPhone className="text-blue-400" />
+                <span>+91 6203638372</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <FaEnvelope className="text-blue-400" />
+                <span>abhishek777661@gmail.com</span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Copyright */}
-        <motion.p
-          className="text-sm text-gray-500"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+        <motion.div
+          className="pt-8 border-t border-gray-700 text-center text-gray-400"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
         >
-          ©2025 Abhishek kumar all right reserved.
-        </motion.p>
+          <p>
+            © {new Date().getFullYear()} Abhishek Kumar. Crafted with ❤️ using
+            React & Tailwind
+          </p>
+        </motion.div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
