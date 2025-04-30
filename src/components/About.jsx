@@ -52,21 +52,22 @@ const About = () => {
         </motion.div>
 
         {/* Right - Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center"
-        >
-          <div className="relative group">
-            <img
-              src={asset.profile}
-              alt="Abhishek Profile"
-              className="rounded-full w-72 h-72 object-cover shadow-xl border-4 border-white group-hover:scale-105 transform transition duration-300"
-            />
-            <div className="absolute inset-0 rounded-full ring-2 ring-blue-500 animate-pulse"></div>
-          </div>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center"
+      >
+        <div className="relative group">
+          <img
+            src={asset.profile}
+            alt="Abhishek Profile"
+            className="rounded-full w-96 h-96 object-cover shadow-2xl border-4 border-white group-hover:scale-105 transform transition duration-300"
+          />
+          <div className="absolute inset-0 rounded-full ring-2 ring-blue-500 animate-pulse"></div>
+        </div>
+      </motion.div>
+
       </div>
     </section>
   );
