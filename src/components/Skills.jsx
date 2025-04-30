@@ -1,136 +1,190 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
+  FaCode,
   FaReact,
   FaTools,
-  FaUserFriends,
   FaBookOpen,
-  FaCode,
+  FaUserFriends,
 } from "react-icons/fa";
 
 const skillsData = [
   {
     title: "Languages",
-    icon: <FaCode className="text-indigo-500 drop-shadow-md" />,
+    icon: <FaCode />,
     skills: "C++, C, Java, Python, JavaScript, PHP",
     width: "95%",
-    delay: 0.2,
   },
   {
     title: "Frameworks",
-    icon: <FaReact className="text-blue-500 drop-shadow-md" />,
+    icon: <FaReact />,
     skills: "Node.js, Express.js, Tailwind CSS, React.js",
     width: "90%",
-    delay: 0.4,
   },
   {
     title: "Tools / Platforms",
-    icon: <FaTools className="text-yellow-500 drop-shadow-md" />,
+    icon: <FaTools />,
     skills: "MySQL, MongoDB, Git, GitHub",
     width: "85%",
-    delay: 0.6,
   },
   {
     title: "Coursework",
-    icon: <FaBookOpen className="text-green-500 drop-shadow-md" />,
+    icon: <FaBookOpen />,
     skills:
       "DSA, Operating System, DBMS, Computer Networking, Probability & Statistics",
     width: "80%",
-    delay: 0.8,
   },
   {
     title: "Soft Skills",
-    icon: <FaUserFriends className="text-pink-500 drop-shadow-md" />,
+    icon: <FaUserFriends />,
     skills: "Problem-Solving, Team Player, Project Management, Adaptability",
     width: "75%",
-    delay: 1.0,
   },
 ];
-
-// Animation container for staggered inner animations
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (customDelay) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: customDelay,
-      duration: 0.6,
-      ease: "easeOut",
-      when: "beforeChildren",
-      staggerChildren: 0.15,
-    },
-  }),
-};
-
-const childVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-purple-100 overflow-hidden"
+      className="relative py-24 bg-gradient-to-br from-white to-gray-100 overflow-hidden"
     >
-      {/* Background Glow Circles */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+      {/* Simplified Animated Background */}
+      <div className="absolute inset-0 bg-grid-slate-700/10" />
 
-      {/* Heading */}
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 relative z-10"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        My <span className="text-blue-600">Skills</span>
-      </motion.h2>
+      {/* Optimized Floating Particles */}
+      {[...Array(10)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-blue-400 rounded-full backface-hidden"
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 0] }}
+          transition={{
+            duration: Math.random() * 3 + 2,
+            repeat: Infinity,
+            delay: Math.random(),
+          }}
+        />
+      ))}
 
-      {/* Skill Cards */}
-      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {skillsData.map(({ title, icon, skills, width, delay }, index) => (
+      {/* Section Heading */}
+      <div className="relative z-10 container mx-auto px-6 mb-16">
+        <motion.div
+          className="max-w-4xl ml-auto"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "0px 0px -25% 0px" }}
+        >
+          <h2 className="text-4xl md:text-6xl font-bold text-right mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Technical Arsenal
+          </h2>
+          <motion.div
+            className="h-1 bg-gradient-to-l from-blue-400 to-transparent ml-auto max-w-xs"
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          />
+        </motion.div>
+      </div>
+
+      {/* Optimized Skills Grid */}
+      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skillsData.map((skill, index) => (
           <motion.div
             key={index}
-            className="bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl p-8 hover:shadow-2xl transition duration-300 border border-gray-200 hover:scale-[1.03] hover:border-blue-400"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            custom={delay}
+            className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-slate-200 overflow-hidden backface-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }} // Animate on entering view
+            transition={{
+              duration: 0.6,
+              delay: index * 0.1,
+              ease: "easeOut",
+            }}
+            viewport={{ once: false, margin: "0px 0px -25% 0px" }} // Trigger on re-entering
           >
-            <motion.div className="flex justify-center text-5xl mb-4" variants={childVariants}>
-              {icon}
-            </motion.div>
+            {/* Hover Effect Layer (CSS-powered) */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-            <motion.h3
-              className="text-2xl font-bold text-gray-800 text-center mb-4"
-              variants={childVariants}
-            >
-              {title}
-            </motion.h3>
+            {/* Skill Content */}
+            <div className="relative z-10">
+              {/* Icon with Simplified Animation */}
+              <div className="flex justify-center mb-4 text-4xl text-blue-400">
+                {skill.icon}
+              </div>
 
-            <motion.div className="w-full bg-gray-300/50 rounded-full h-3 mb-4" variants={childVariants}>
-              <motion.div
-                className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full"
-                style={{ width }}
-                initial={{ width: 0 }}
-                animate={{ width }}
-                transition={{ duration: 1.2 }}
-              />
-            </motion.div>
+              {/* Title */}
+              <h3 className="text-xl font-bold text-center mb-4 text-slate-800">
+                {skill.title}
+              </h3>
 
-            <motion.p
-              className="text-gray-700 text-center leading-relaxed text-[1rem]"
-              variants={childVariants}
-            >
-              {skills}
-            </motion.p>
+              {/* Simplified Progress Indicator */}
+              <div className="relative w-full mb-6">
+                <div className="relative mx-auto w-28 h-28">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    <circle
+                      className="text-slate-200"
+                      strokeWidth="8"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="40"
+                      cx="50"
+                      cy="50"
+                    />
+                    <motion.circle
+                      className="text-blue-400"
+                      strokeWidth="8"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="40"
+                      cx="50"
+                      cy="50"
+                      initial={{ strokeDashoffset: 251 }}
+                      whileInView={{
+                        strokeDashoffset:
+                          251 * (1 - parseInt(skill.width) / 100),
+                      }}
+                      transition={{ duration: 1.2, ease: "easeInOut" }}
+                      strokeDasharray="251"
+                      viewport={{ once: true }}
+                    />
+                  </svg>
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-semibold text-blue-400">
+                    {skill.width}
+                  </span>
+                </div>
+              </div>
+
+              {/* Skills Tags (CSS Animations Only) */}
+              <div className="flex flex-wrap justify-center gap-2">
+                {skill.skills.split(", ").map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="px-3 py-1.5 bg-slate-200/50 rounded-full border border-slate-300 text-slate-700 hover:bg-blue-100 transition-colors text-sm"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Simplified Floating Element */}
+      <motion.div
+        className="absolute top-1/3 left-1/4 w-16 h-16 bg-blue-400/10 backdrop-blur-sm rounded-xl backface-hidden"
+        animate={{
+          y: [-15, 15],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatType: "mirror",
+        }}
+      />
     </section>
   );
 };
-
 export default SkillsSection;
