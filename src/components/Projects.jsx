@@ -26,7 +26,7 @@ const projects = [
     description:
       "This real-time portal enables users to instantly locate and book the nearest available ambulance during emergencies. It includes GPS-based tracking, live status updates, driver dashboard, and secure booking with JWT-based authentication.",
     tech: ["React", "Node.js", "MongoDB", "JWT"],
-    link: "https://github.com/GovindKumar04/Emergency_Ambulance_Booking_Portal",
+    link: "https://github.com/Abhishek6725/Health-Care-Website-Frontend-Project",
     image:
       "https://user-images.githubusercontent.com/95934322/211133418-cfeee594-a5b3-4e8f-ae28-6202dbf7e342.jpeg",
   },
