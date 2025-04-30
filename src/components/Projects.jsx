@@ -61,7 +61,6 @@ const Projects = () => {
           >
             My <span className="text-blue-600">Projects</span>
           </motion.h2>
-
           <motion.div
             className="h-1 bg-gradient-to-r from-blue-500 to-transparent mr-auto max-w-xs"
             initial={{ width: 0 }}
