@@ -80,17 +80,6 @@ const About = () => {
             <span className="text-blue-600">maintainable architecture</span>,
             ensuring long-term project success.
           </motion.p>
-
-          <motion.p
-            className="text-lg md:text-xl text-gray-700 leading-relaxed"
-            variants={textVariants}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Continuously evolving through emerging technologies, I bridge the
-            gap between technical implementation and creative design. Beyond
-            coding, I contribute to open-source projects and mentor aspiring
-            developers.
-          </motion.p>
         </motion.div>
 
         {/* Image Section - Right Side */}
