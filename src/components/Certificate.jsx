@@ -15,7 +15,7 @@ const Certificates = () => {
       buttonColor: "bg-green-600 hover:bg-green-700",
     },
     {
-      title: "Generative AI with Large Language Models",
+      title: "Mastering Data Structures & Algorithms using C and C++",
       description:
         "Completed an advanced AI course, covering LLM architectures, prompt engineering, and practical implementation scenarios.",
       tags: ["Achievement", "Excellence", "Recognition"],
