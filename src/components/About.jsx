@@ -1,66 +1,73 @@
 import React from "react";
-import {asset} from '../assets/index/'
+import { asset } from "../assets/index/";
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 const About = () => {
   return (
     <section id="about" className="py-20 bg-gray-50">
-      {/* Header */}
+      {/* Header with Typing Effect */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8"
+        className="text-4xl md:text-5xl font-bold text-center mb-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         About <span className="text-blue-600">Me</span>
+        <span className="block text-xl mt-2 text-gray-500 font-medium">
+          <Typewriter
+            words={[
+              "Full Stack Developer",
+              "Tech Enthusiast",
+              "Creative Coder",
+              "Problem Solver",
+            ]}
+            loop={true}
+            cursor
+            cursorStyle="|"
+            typeSpeed={80}
+            deleteSpeed={40}
+            delaySpeed={1200}
+          />
+        </span>
       </motion.h1>
 
       {/* About Content */}
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left Section - Text */}
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* Left - Text */}
         <motion.div
-          className="text-section"
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-lg md:text-xl text-gray-700 mb-4">
-          Greetings, I am <span className="text-blue-600 font-semibold">Abhishek</span>, a passionate and results-driven full-stack developer specializing in both front-end and back-end development. I am committed to building high-quality, scalable web applications that deliver meaningful impact and exceptional user experiences.
+          <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed">
+            Hello! I’m <span className="text-blue-600 font-semibold">Abhishek</span>, a passionate and results-driven full-stack developer who crafts seamless web experiences from front to back. I specialize in building modern, scalable applications that prioritize both performance and user satisfaction.
           </p>
-          <p className="text-lg md:text-xl text-gray-700 mb-4">
-            With a focus on clean, maintainable code, I strive to use the best technologies for each project and work
-            collaboratively to achieve great results. I am always eager to learn new things and enhance my skill set.
+          <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed">
+            I thrive on writing clean, maintainable code and love collaborating with teams to solve real-world problems. With a strong foundation in core CS subjects and hands-on project experience, I'm always pushing to grow and evolve.
           </p>
-          <p className="text-lg md:text-xl text-gray-700 mb-4">
-            In addition to coding, I love exploring design principles, UI/UX, and diving into the creative aspects of
-            application development.
+          <p className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed">
+            Beyond code, I enjoy exploring UI/UX design principles, user psychology, and turning creative ideas into interactive interfaces.
           </p>
         </motion.div>
 
-        {/* Right Section - Image */}
+        {/* Right - Image */}
         <motion.div
-          className="image-section"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
+          className="flex justify-center"
         >
-          <img
-            src={asset.profile}
-            alt="Profile"
-            className="rounded-full w-64 h-64 object-cover mx-auto shadow-lg"
-          />
+          <div className="relative group">
+            <img
+              src={asset.profile}
+              alt="Abhishek Profile"
+              className="rounded-full w-72 h-72 object-cover shadow-xl border-4 border-white group-hover:scale-105 transform transition duration-300"
+            />
+            <div className="absolute inset-0 rounded-full ring-2 ring-blue-500 animate-pulse"></div>
+          </div>
         </motion.div>
       </div>
-
-      {/* Skills List */}
-      <motion.div
-        className="skills-section mt-6 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        
-      </motion.div>
     </section>
   );
 };
