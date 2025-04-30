@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-white via-gray-100 to-white">
+    <section id="contact" className="py-10 bg-gradient-to-br from-white via-gray-100 to-white">
       {/* Header */}
       <motion.h1
         id="contact"
