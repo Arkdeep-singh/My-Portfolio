@@ -11,6 +11,7 @@ const Certificates = () => {
       tags: ["Completion", "Course", "Achievement"],
       link: "https://drive.google.com/file/d/1zuilmW466uumvlN-vT1jElBmF1lJRac-/view?usp=drivesdk",
       iconColor: "text-green-600",
+      buttonColor: "bg-green-600 hover:bg-green-700", // Added button color
     },
     {
       title: "Generative AI with Large Language Models",
@@ -19,6 +20,7 @@ const Certificates = () => {
       tags: ["Achievement", "Excellence", "Recognition"],
       link: "https://drive.google.com/file/d/1zx36opz-EaGAIopejuuWR7Mxt86F_IpL/view?usp=drivesdk",
       iconColor: "text-blue-600",
+      buttonColor: "bg-blue-600 hover:bg-blue-700",
     },
     {
       title: "The World of Computer Networking",
@@ -27,8 +29,22 @@ const Certificates = () => {
       tags: ["Udemy", "Online Learning", "Skill Development"],
       link: "https://drive.google.com/file/d/1MpXLSjROLmMNxphvjKGf1mVtX6RmDzVW/view?usp=drivesdk",
       iconColor: "text-purple-600",
+      buttonColor: "bg-purple-600 hover:bg-purple-700",
     },
   ];
+
+  const getTagStyle = (tag) => {
+    switch (tag) {
+      case "Completion":
+        return "bg-green-100 text-green-800 border border-green-200";
+      case "Course":
+        return "bg-blue-100 text-blue-800 border border-blue-200";
+      case "Achievement":
+        return "bg-purple-100 text-purple-800 border border-purple-200";
+      default:
+        return "bg-gray-100 text-gray-800 border border-gray-200";
+    }
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
@@ -52,7 +68,7 @@ const Certificates = () => {
   return (
     <section
       id="certificates"
-      className="py-20 bg-gradient-to-br from-blue-50 to-purple-50"
+      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
     >
       <motion.h1
         className="text-4xl md:text-5xl font-bold text-center mb-16"
@@ -62,7 +78,7 @@ const Certificates = () => {
         viewport={{ margin: "0px 0px -25% 0px" }}
       >
         My{" "}
-        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
           Certificates
         </span>
       </motion.h1>
@@ -77,22 +93,15 @@ const Certificates = () => {
             whileInView="visible"
             viewport={{ margin: "0px 0px -25% 0px" }}
           >
-            {/* Animated Border */}
-            <motion.div
-              className="absolute inset-0 border-2 border-transparent group-hover:border-blue-200 rounded-2xl transition-all duration-300"
-              initial={{ scale: 0.95 }}
-              whileInView={{ scale: 1 }}
-            />
-
             <motion.div
               className="mb-6 flex justify-center"
               variants={itemVariants}
             >
-              <div className="p-4 bg-blue-50 rounded-2xl shadow-inner">
+              <div className="p-4 bg-opacity-10 rounded-2xl shadow-inner">
                 <FaCertificate
                   className={`text-5xl ${cert.iconColor}`}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
                 />
               </div>
             </motion.div>
@@ -118,14 +127,9 @@ const Certificates = () => {
               {cert.tags.map((tag, idx) => (
                 <motion.span
                   key={idx}
-                  className="px-3 py-1 rounded-full text-sm font-medium bg-opacity-20"
-                  style={{
-                    backgroundColor: `${cert.iconColor.replace(
-                      "text",
-                      "bg"
-                    )}20`,
-                    color: cert.iconColor,
-                  }}
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getTagStyle(
+                    tag
+                  )}`}
                   variants={itemVariants}
                 >
                   {tag}
@@ -137,7 +141,7 @@ const Certificates = () => {
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full py-3 font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:shadow-md transition-all"
+              className={`inline-flex items-center justify-center w-full py-3 font-medium text-white ${cert.buttonColor} rounded-lg transition-all`}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
