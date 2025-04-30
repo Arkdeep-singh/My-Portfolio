@@ -82,7 +82,7 @@ const About = () => {
           </motion.p>
         </motion.div>
 
-        {/* Image Section - Right Side */}
+        {/* Image Section - Right Side with Typing Effect */}
         <motion.div
           className="lg:w-1/2 flex justify-center relative"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -97,6 +97,31 @@ const About = () => {
               className="rounded-full w-full h-full object-cover shadow-2xl border-8 border-white/90 relative z-10"
             />
 
+            {/* Typing Effect Container */}
+            <motion.div
+              className="absolute -right-20 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 p-4 rounded-lg shadow-lg"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <div className="text-lg font-medium text-gray-700">
+                <Typewriter
+                  words={[
+                    "Web Development",
+                    "Cloud Architecture",
+                    "UI/UX Design",
+                    "System Design",
+                  ]}
+                  loop={true}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={70}
+                  deleteSpeed={40}
+                  delaySpeed={2000}
+                />
+              </div>
+            </motion.div>
+
             {/* Subtle Wave Animation */}
             <motion.div
               className="absolute inset-0 rounded-full border-4 border-blue-200/30"
@@ -108,43 +133,9 @@ const About = () => {
                 repeatType: "loop",
               }}
             />
-            <motion.div
-              className="absolute inset-0 rounded-full border-4 border-blue-300/20"
-              animate={{ scale: [1, 1.6], opacity: [0.3, 0] }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeOut",
-                repeatType: "loop",
-                delay: 0.5,
-              }}
-            />
           </div>
         </motion.div>
       </div>
-
-      {/* Typewriter Effect Footer */}
-      <motion.div
-        className="text-center mt-16 text-xl text-gray-600 font-medium"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      >
-        <Typewriter
-          words={[
-            "Full-Stack Architecture",
-            "Cloud-Native Solutions",
-            "UI/UX Optimization",
-            "System Design",
-          ]}
-          loop={true}
-          cursor
-          cursorStyle="|"
-          typeSpeed={70}
-          deleteSpeed={40}
-          delaySpeed={2000}
-        />
-      </motion.div>
     </section>
   );
 };
