@@ -33,11 +33,11 @@ const Certificates = () => {
       buttonColor: "bg-purple-600 hover:bg-purple-700",
     },
     {
-      title: "Fundamentals of Machine Learning",
+      title: "Programming in C++: A Hands-on Introduction",
       description:
-        "Explored essential ML concepts including supervised and unsupervised learning, and implemented real-world projects.",
+        " Completed a hands-on course on C++ programming, covering fundamental concepts and practical applications. Gained proficiency in C++ syntax, data structures, and object-oriented programming principles. This course enhanced my programming skills and prepared me for advanced software development tasks.",
       tags: ["Learning", "ML", "Coursera"],
-      link: "https://drive.google.com/file/d/your-certificate-id/view?usp=drivesdk",
+      link: "https://drive.google.com/file/d/17Jya86FZTTlao3K3oOJKJdAWt_8GgbcJ/view",
       iconColor: "text-orange-600",
       buttonColor: "bg-orange-600 hover:bg-orange-700",
     },
