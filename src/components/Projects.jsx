@@ -8,20 +8,20 @@ import {
 
 const projects = [
   {
-    title: "Woofey - Online Food ordering website",
-    description:
-      "Woofey is a full-fledged online food ordering platform that allows users to browse a variety of restaurants, customize orders, make secure payments via Razorpay, and track their deliveries in real-time. It supports user authentication and is built with a modular scalable backend.",
-    tech: ["React", "Tailwind CSS", "MongoDB", "Razorpay API"],
-    link: "https://github.com/GovindKumar04/Woofey",
-    image: "path_to_woofey_image.jpg",
+    title: "E-Commerce Platform",
+  description:
+    "A fully functional eCommerce platform built using PHP, JavaScript, and MySQL. It features dynamic product listings, secure user authentication, shopping cart functionality, order processing, and an admin dashboard for inventory and order management. The platform offers a seamless and responsive user experience, allowing customers to browse products, add them to cart, and complete purchases with ease.",
+  tech: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+  link: "https://github.com/GovindKumar04/eCommerce-Platform",
+    image: "http://unblast.com/wp-content/uploads/2020/04/E-Commerce-App-Template-1.jpg",
   },
   {
-    title: "Boost Pro - Fitness and Wellness Platform",
+    title: "E-Learning Dashboard",
     description:
-      "Boost Pro is a fitness management platform offering users the ability to book workouts, access dietary plans, and track health metrics. It integrates multiple services including trainer booking, health records, and goal tracking through a responsive and user-friendly UI.",
-    tech: ["Node.js", "MongoDB", "HTML", "CSS", "JavaScript"],
-    link: "https://github.com/GovindKumar04/BOOST-PRO-",
-    image: "path_to_boostpro_image.jpg",
+      "An interactive e-learning dashboard designed to manage and track 100+ courses efficiently. Built with Node.js, Express.js, and MongoDB, it includes real-time discussion features enabling instant student-instructor communication for 500+ users, reducing response delays by 40%. The interface is optimized with Tailwind CSS to improve usability, cutting navigation effort by 30% and boosting learner engagement by 60%.",
+    tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript"],
+    link: "https://github.com/GovindKumar04/e-learning-dashboard", 
+    image: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/d2e21d165015155.640046fb9fc22.jpg",
   },
   {
     title: "Emergency Ambulance Booking Portal",
@@ -29,7 +29,7 @@ const projects = [
       "This real-time portal enables users to instantly locate and book the nearest available ambulance during emergencies. It includes GPS-based tracking, live status updates, driver dashboard, and secure booking with JWT-based authentication.",
     tech: ["React", "Node.js", "MongoDB", "JWT"],
     link: "https://github.com/GovindKumar04/Emergency_Ambulance_Booking_Portal",
-    image: "path_to_ambulance_image.jpg",
+    image: "https://user-images.githubusercontent.com/95934322/211133418-cfeee594-a5b3-4e8f-ae28-6202dbf7e342.jpeg",
   },
   {
     title: "Pong Game",
@@ -37,7 +37,7 @@ const projects = [
       "A retro-style Pong game built using Python’s Turtle module. It recreates the classic 2D game experience with responsive paddle control, scoring system, and game-over detection — a beginner-friendly project to demonstrate interactive UI design in Python.",
     tech: ["Python", "Turtle Module"],
     link: "https://github.com/GovindKumar04/pong-game",
-    image: "path_to_pong_image.jpg",
+    image: "https://tse2.mm.bing.net/th?id=OIP.ZJteWv0dV0NDQFE5rXuDsAHaFj&pid=Api&P=0&h=180",
   },
 ];
 
