@@ -37,7 +37,7 @@ const projects = [
     tech: ["C++"],
     link: "https://github.com/Abhishek6725/LMS_BoardInfinity_Project",
     image:
-      "https://th.bing.com/th/id/OIP.4be_r1zdQ_dfrFFHPS_P2wHaET?rs=1&pid=ImgDetMain",
+      "https://themes.getbootstrap.com/wp-content/uploads/2021/12/preview-screenshot-2.jpg",
   },  
   {
     title: "Pong Game",
@@ -46,7 +46,7 @@ const projects = [
     tech: ["Python", "Turtle Module"],
     link: "https://github.com/GovindKumar04/pong-game",
     image:
-      "https://tse2.mm.bing.net/th?id=OIP.ZJteWv0dV0NDQFE5rXuDsAHaFj&pid=Api&P=0&h=180",
+      "https://th.bing.com/th/id/R.649b5e5afd1d574343405139ad7b83b0?rik=1WZECYFS0J017Q&riu=http%3a%2f%2fhausnes.no%2fblogg%2fwp-content%2fuploads%2fpong-game-screenshot.jpg&ehk=LRTujwRvUE2e13PPBmtnfdyarAxpUSrM6pH14OMwaBg%3d&risl=&pid=ImgRaw&r=0",
   },
 ];
 
