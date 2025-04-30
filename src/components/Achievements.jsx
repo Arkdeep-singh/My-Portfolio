@@ -9,30 +9,24 @@ const Achievements = () => {
       description:
         "Reached the final round of Hack-A-Throne 2024, organized by AIESEC.",
       tags: ["Hackathon", "AIESEC", "Finalist"],
-      link: "#",
       icon: <FaCrown className="text-4xl" />,
       color: "from-yellow-400/20 to-yellow-600/10",
-      button: "bg-yellow-500 hover:bg-yellow-600",
     },
     {
       title: "ABHIBYAKTI 2K20 – Essay Competition",
       description:
         "Runner-up (2nd Position) in an essay writing competition at IIMT Group of Colleges.",
       tags: ["Essay Writing", "Creativity", "Competition"],
-      link: "#",
       icon: <FaMedal className="text-4xl" />,
       color: "from-red-400/20 to-red-600/10",
-      button: "bg-red-500 hover:bg-red-600",
     },
     {
       title: "Code-A-Haunt Hackathon – LPU",
       description:
         "Secured 5th rank in the Code-A-Haunt Hackathon held at Lovely Professional University.",
       tags: ["Hackathon", "Coding", "Problem Solving"],
-      link: "#",
       icon: <FaLaptopCode className="text-4xl" />,
       color: "from-blue-400/20 to-blue-600/10",
-      button: "bg-blue-500 hover:bg-blue-600",
     },
   ];
 
@@ -120,9 +114,13 @@ const Achievements = () => {
             >
               <div className="p-4 bg-white/90 rounded-full shadow-lg">
                 <motion.div
-                  className={achievement.button
-                    .replace("bg", "text")
-                    .replace(" hover:bg", "")}
+                  className={
+                    achievement.color.includes("yellow")
+                      ? "text-yellow-500"
+                      : achievement.color.includes("red")
+                      ? "text-red-500"
+                      : "text-blue-500"
+                  }
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -146,7 +144,7 @@ const Achievements = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-2 mb-6"
+              className="flex flex-wrap gap-2"
               variants={itemVariants}
             >
               {achievement.tags.map((tag, idx) => (
@@ -162,17 +160,11 @@ const Achievements = () => {
               ))}
             </motion.div>
 
-            <motion.a
-              href={achievement.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center w-full py-3 font-medium text-white ${achievement.button} rounded-lg transition-all`}
+            {/* Added a subtle decorative element instead of the button */}
+            <motion.div 
+              className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Details
-            </motion.a>
+            />
           </motion.div>
         ))}
       </div>
