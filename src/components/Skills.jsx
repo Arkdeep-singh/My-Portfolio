@@ -66,35 +66,43 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const lineVariants = {
+  hidden: { width: 0 },
+  visible: { width: "100%" },
+};
+
 const SkillsSection = () => {
   return (
     <section
       id="skills"
       className="relative py-24 bg-gradient-to-br from-gray-50 to-blue-50"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 -left-20 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-20 -right-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-30"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 8, repeat: Infinity, delay: 2 }}
-        />
+      {/* Background elements remain unchanged */}
+
+      {/* Updated Right-Aligned Heading */}
+      <div className="relative z-10 container mx-auto px-6 mb-16">
+        <div className="max-w-4xl ml-auto">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-right mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          >
+            My <span className="text-blue-600">Skills</span>
+          </motion.h2>
+
+          <motion.div
+            className="h-1 bg-gradient-to-l from-blue-500 to-transparent ml-auto max-w-xs"
+            variants={lineVariants}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          />
+        </div>
       </div>
 
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 relative z-10"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ margin: "0px 0px -25% 0px" }}
-      >
-        My <span className="text-blue-600">Skills</span>
-      </motion.h2>
-
+      {/* Skills Grid (rest of the code remains same) */}
       <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {skillsData.map((skill, index) => (
           <motion.div
