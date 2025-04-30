@@ -6,11 +6,11 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const Certificates = () => {
   const certificates = [
     {
-      title: "Approximation Algorithms and Linear Programming",
+      title: "NIIT Course Certificate Server side JavaScript with Node.js and Express.js",  
       description:
-        "Successfully completed this course, gaining knowledge of algorithm optimization techniques and linear programming fundamentals.",
+        "I successfully completed the “Server-side JavaScript with Node.js” course offered by NIIT through Coursera on May 13, 2024. This course enhanced my backend development skills by providing hands-on experience in building scalable server-side applications using Node.js. Key topics included setting up Node.js environments, working with Express.js, creating RESTful APIs, handling asynchronous operations, and understanding basic deployment practices.",
       tags: ["Completion", "Course", "Achievement"],
-      link: "https://drive.google.com/file/d/1zuilmW466uumvlN-vT1jElBmF1lJRac-/view?usp=drivesdk",
+      link: "https://drive.google.com/file/d/1eV0GIG6j3yin4xNmW4uJcJYCzY8Lleeh/view",
       iconColor: "text-green-600",
       buttonColor: "bg-green-600 hover:bg-green-700",
     },
