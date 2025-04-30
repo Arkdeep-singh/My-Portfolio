@@ -2,179 +2,104 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaFigma,
-  FaDatabase,
   FaTools,
+  FaUserFriends,
+  FaBookOpen,
+  FaCode,
 } from "react-icons/fa";
-import { SiMongodb, SiTailwindcss, SiJavascript, SiExpress } from "react-icons/si";
 
-const Skills = () => {
+const skillsData = [
+  {
+    title: "Languages",
+    icon: <FaCode className="text-indigo-500 drop-shadow-md" />,
+    skills: "C++, C, Java, Python, JavaScript, PHP",
+    width: "95%",
+    delay: 0.2,
+  },
+  {
+    title: "Frameworks",
+    icon: <FaReact className="text-blue-500 drop-shadow-md" />,
+    skills: "Node.js, Express.js, Tailwind CSS, React.js",
+    width: "90%",
+    delay: 0.4,
+  },
+  {
+    title: "Tools / Platforms",
+    icon: <FaTools className="text-yellow-500 drop-shadow-md" />,
+    skills: "MySQL, MongoDB, Git, GitHub",
+    width: "85%",
+    delay: 0.6,
+  },
+  {
+    title: "Coursework",
+    icon: <FaBookOpen className="text-green-500 drop-shadow-md" />,
+    skills:
+      "DSA, Operating System, DBMS, Computer Networking, Probability & Statistics",
+    width: "80%",
+    delay: 0.8,
+  },
+  {
+    title: "Soft Skills",
+    icon: <FaUserFriends className="text-pink-500 drop-shadow-md" />,
+    skills: "Problem-Solving, Team Player, Project Management, Adaptability",
+    width: "75%",
+    delay: 1.0,
+  },
+];
+
+const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8"
+    <section
+      id="skills"
+      className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-purple-100 overflow-hidden"
+    >
+      {/* Background Glow Circles */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+
+      {/* Heading */}
+      <motion.h2
+        className="text-4xl md:text-5xl font-bold text-center mb-16 relative z-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         My <span className="text-blue-600">Skills</span>
-      </motion.h1>
+      </motion.h2>
 
-      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Frontend */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="flex justify-center text-blue-600 text-4xl mb-2">
-            <FaReact />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Frontend Development
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "90%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "90%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">HTML, CSS, JavaScript, React, Tailwind CSS</p>
-        </motion.div>
+      {/* Skill Cards */}
+      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {skillsData.map(({ title, icon, skills, width, delay }, index) => (
+          <motion.div
+            key={index}
+            className="bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl p-8 hover:shadow-2xl transition duration-300 border border-gray-200 hover:scale-[1.03] hover:border-blue-400"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay }}
+          >
+            <div className="flex justify-center text-5xl mb-4">{icon}</div>
+            <h3 className="text-2xl font-bold text-gray-800 text-center mb-4">
+              {title}
+            </h3>
 
-        {/* Backend */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="flex justify-center text-green-600 text-4xl mb-2">
-            <FaNodeJs />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Backend Development
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "80%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "80%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">Node.js, Express, MongoDB, SQL</p>
-        </motion.div>
+            <div className="w-full bg-gray-300/50 rounded-full h-3 mb-4">
+              <motion.div
+                className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full"
+                style={{ width }}
+                initial={{ width: 0 }}
+                animate={{ width }}
+                transition={{ duration: 1.2 }}
+              />
+            </div>
 
-        {/* Version Control */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="flex justify-center text-orange-500 text-4xl mb-2">
-            <FaGitAlt />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Version Control
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "85%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "85%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">Git, GitHub, GitLab</p>
-        </motion.div>
-
-        {/* UI/UX Design */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <div className="flex justify-center text-pink-500 text-4xl mb-2">
-            <FaFigma />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            UI/UX Design
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "65%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "65%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">Figma, Sketch</p>
-        </motion.div>
-
-        {/* Databases */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <div className="flex justify-center text-purple-600 text-4xl mb-2">
-            <FaDatabase />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Databases
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "70%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "70%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">MongoDB, MySQL, PostgreSQL</p>
-        </motion.div>
-
-        {/* Other Skills */}
-        <motion.div
-          className="skill-card bg-white shadow-lg rounded-lg p-6 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        >
-          <div className="flex justify-center text-gray-600 text-4xl mb-2">
-            <FaTools />
-          </div>
-          <motion.h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Other Skills
-          </motion.h2>
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-            <motion.div
-              className="bg-blue-600 h-2.5 rounded-full"
-              style={{ width: "60%" }}
-              initial={{ width: 0 }}
-              animate={{ width: "60%" }}
-              transition={{ duration: 1 }}
-            />
-          </div>
-          <p className="text-gray-600">Problem Solving, API Integration</p>
-        </motion.div>
+            <p className="text-gray-700 text-center leading-relaxed text-[1rem]">
+              {skills}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default Skills;
+export default SkillsSection;
