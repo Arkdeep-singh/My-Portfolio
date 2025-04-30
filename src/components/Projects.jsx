@@ -95,21 +95,22 @@ const Projects = () => {
                 ))}
               </div>
               <motion.a
-                href={projects[index].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white bg-gray-800 hover:bg-gray-900 px-5 py-3 rounded-lg text-base font-medium shadow-lg"
-                animate={{
-                  y: [0, -1, 0, 1, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <FaGithub />
-                View on GitHub
+  href={projects[index].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 text-white bg-gray-800 hover:bg-gray-900 px-5 py-3 rounded-lg text-base font-medium shadow-lg"
+  whileHover={{ scale: 1.05 }}
+  animate={{
+    y: [0, -2, 0, 2, 0],
+  }}
+  transition={{
+    duration: 1.8,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+>
+  <FaGithub className="text-lg" />
+  <span className="whitespace-nowrap">View on GitHub</span>
               </motion.a>
             </div>
           </motion.div>
