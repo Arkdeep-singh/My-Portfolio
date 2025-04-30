@@ -5,10 +5,17 @@ import { Typewriter } from "react-simple-typewriter";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section
+      id="about"
+      className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden"
+    >
+      {/* Decorative Background Elements */}
+      <div className="absolute w-72 h-72 bg-blue-300 rounded-full top-0 left-0 blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute w-96 h-96 bg-purple-300 rounded-full bottom-0 right-0 blur-3xl opacity-20 animate-pulse" />
+
       {/* Header with Typing Effect */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-10"
+        className="relative z-10 text-4xl md:text-5xl font-bold text-center mb-10"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -33,32 +40,32 @@ const About = () => {
       </motion.h1>
 
       {/* About Content */}
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Left - Text */}
         <div>
           <motion.p
-            className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed"
+            className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             Hello! I’m <span className="text-blue-600 font-semibold">Abhishek</span>, a passionate and results-driven full-stack developer who crafts seamless web experiences from front to back. I specialize in building modern, scalable applications that prioritize both performance and user satisfaction.
           </motion.p>
 
           <motion.p
-            className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed"
+            className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             I thrive on writing clean, maintainable code and love collaborating with teams to solve real-world problems. With a strong foundation in core CS subjects and hands-on project experience, I'm always pushing to grow and evolve.
           </motion.p>
 
           <motion.p
-            className="text-lg md:text-xl text-gray-700 mb-4 leading-relaxed"
+            className="text-lg md:text-xl text-gray-700 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
             Beyond code, I enjoy exploring UI/UX design principles, user psychology, and turning creative ideas into interactive interfaces.
           </motion.p>
