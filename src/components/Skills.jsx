@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
+  FaCode,
   FaReact,
   FaTools,
-  FaUserFriends,
   FaBookOpen,
-  FaCode,
+  FaUserFriends,
 } from "react-icons/fa";
 
 const skillsData = [
@@ -47,85 +47,110 @@ const skillsData = [
   },
 ];
 
-// Animation container for staggered inner animations
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (customDelay) => ({
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      delay: customDelay,
       duration: 0.6,
-      ease: "easeOut",
-      when: "beforeChildren",
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
-  }),
+  },
 };
 
-const childVariants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  visible: { opacity: 1, y: 0 },
 };
 
 const SkillsSection = () => {
   return (
     <section
       id="skills"
-      className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-purple-100 overflow-hidden"
+      className="relative py-24 bg-gradient-to-br from-gray-50 to-blue-50"
     >
-      {/* Background Glow Circles */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-300 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 -left-20 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-30"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 -right-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-30"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+        />
+      </div>
 
-      {/* Heading */}
       <motion.h2
         className="text-4xl md:text-5xl font-bold text-center mb-16 relative z-10"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ margin: "0px 0px -25% 0px" }}
       >
         My <span className="text-blue-600">Skills</span>
       </motion.h2>
 
-      {/* Skill Cards */}
-      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {skillsData.map(({ title, icon, skills, width, delay }, index) => (
+      <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {skillsData.map((skill, index) => (
           <motion.div
             key={index}
-            className="bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl p-8 hover:shadow-2xl transition duration-300 border border-gray-200 hover:scale-[1.03] hover:border-blue-400"
-            variants={containerVariants}
+            className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-gray-200"
+            variants={cardVariants}
             initial="hidden"
-            animate="visible"
-            custom={delay}
+            whileInView="visible"
+            viewport={{ margin: "0px 0px -25% 0px" }}
           >
-            <motion.div className="flex justify-center text-5xl mb-4" variants={childVariants}>
-              {icon}
+            <motion.div
+              className="flex justify-center mb-6 text-5xl text-blue-600"
+              variants={itemVariants}
+            >
+              {React.cloneElement(skill.icon, { className: "drop-shadow-sm" })}
             </motion.div>
 
             <motion.h3
-              className="text-2xl font-bold text-gray-800 text-center mb-4"
-              variants={childVariants}
+              className="text-2xl font-bold text-gray-800 text-center mb-6"
+              variants={itemVariants}
             >
-              {title}
+              {skill.title}
             </motion.h3>
 
-            <motion.div className="w-full bg-gray-300/50 rounded-full h-3 mb-4" variants={childVariants}>
-              <motion.div
-                className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full"
-                style={{ width }}
-                initial={{ width: 0 }}
-                animate={{ width }}
-                transition={{ duration: 1.2 }}
-              />
+            <motion.div
+              className="flex justify-center mb-6"
+              variants={itemVariants}
+            >
+              <div className="relative w-full h-2 bg-gray-200 rounded-full">
+                <motion.div
+                  className="absolute h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: skill.width }}
+                  transition={{ duration: 1.2, delay: 0.2 }}
+                  viewport={{ once: false }}
+                />
+              </div>
             </motion.div>
 
-            <motion.p
-              className="text-gray-700 text-center leading-relaxed text-[1rem]"
-              variants={childVariants}
+            <motion.div
+              className="flex flex-wrap justify-center gap-2"
+              variants={itemVariants}
             >
-              {skills}
-            </motion.p>
+              {skill.skills.split(", ").map((item, idx) => (
+                <motion.span
+                  key={idx}
+                  className="px-3 py-1.5 text-sm font-medium bg-blue-50 text-blue-700 rounded-full"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ type: "spring", delay: idx * 0.1 }}
+                  viewport={{ once: false }}
+                >
+                  {item}
+                </motion.span>
+              ))}
+            </motion.div>
           </motion.div>
         ))}
       </div>
