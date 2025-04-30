@@ -35,7 +35,7 @@ const projects = [
     description:
       "A Learning Management System (LMS) built using C++ that manages student records, course enrollments, and grading functionalities. Designed as a console-based application, it emphasizes object-oriented programming principles and file handling, offering a foundational tool for academic administration.",
     tech: ["C++"],
-    link: "https://github.com/GovindKumar04/LMS_BoardInfinity_Project",
+    link: "https://github.com/Abhishek6725/LMS_BoardInfinity_Project",
     image:
       "https://th.bing.com/th/id/OIP.4be_r1zdQ_dfrFFHPS_P2wHaET?rs=1&pid=ImgDetMain",
   },  
