@@ -17,7 +17,7 @@ const projects = [
     description:
       "An interactive e-learning dashboard designed to manage and track 100+ courses efficiently. Built with Node.js, Express.js, and MongoDB, it includes real-time discussion features enabling instant student-instructor communication for 500+ users, reducing response delays by 40%. The interface is optimized with Tailwind CSS to improve usability, cutting navigation effort by 30% and boosting learner engagement by 60%.",
     tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript"],
-    link: "https://github.com/GovindKumar04/e-learning-dashboard",
+    link: "https://github.com/Abhishek6725/E-learning--BackendProject",
     image:
       "https://mir-s3-cdn-cf.behance.net/project_modules/fs/d2e21d165015155.640046fb9fc22.jpg",
   },
@@ -26,10 +26,19 @@ const projects = [
     description:
       "This real-time portal enables users to instantly locate and book the nearest available ambulance during emergencies. It includes GPS-based tracking, live status updates, driver dashboard, and secure booking with JWT-based authentication.",
     tech: ["React", "Node.js", "MongoDB", "JWT"],
-    link: "https://github.com/GovindKumar04/Emergency_Ambulance_Booking_Portal",
+    link: "https://github.com/Abhishek6725/Health-Care-Website-Frontend-Project",
     image:
       "https://user-images.githubusercontent.com/95934322/211133418-cfeee594-a5b3-4e8f-ae28-6202dbf7e342.jpeg",
   },
+  {
+    title: "LMS_BoardInfinity_Project",
+    description:
+      "A Learning Management System (LMS) built using C++ that manages student records, course enrollments, and grading functionalities. Designed as a console-based application, it emphasizes object-oriented programming principles and file handling, offering a foundational tool for academic administration.",
+    tech: ["C++"],
+    link: "https://github.com/Abhishek6725/LMS_BoardInfinity_Project",
+    image:
+      "https://th.bing.com/th/id/OIP.4be_r1zdQ_dfrFFHPS_P2wHaET?rs=1&pid=ImgDetMain",
+  },  
   {
     title: "Pong Game",
     description:
