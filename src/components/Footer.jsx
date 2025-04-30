@@ -73,7 +73,7 @@ const Footer = () => {
           variants={footerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ margin: "0px 0px -25% 0px" }}
         >
           {/* Brand Section */}
           <motion.div variants={itemVariants} className="space-y-4">
@@ -169,6 +169,7 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
+          viewport={{ margin: "0px 0px -25% 0px" }}
         >
           <p>
             © {new Date().getFullYear()} Abhishek Kumar. Crafted with ❤️ using
