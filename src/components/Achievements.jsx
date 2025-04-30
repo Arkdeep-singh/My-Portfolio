@@ -5,30 +5,31 @@ import { FaCrown, FaMedal, FaLaptopCode } from "react-icons/fa";
 const Achievements = () => {
   const achievements = [
     {
-      title: "Hack-A-Throne 2024 by AIESEC",
+      title: "Golden Badges on HackerRank",
       description:
-        "Reached the final round of Hack-A-Throne 2024, organized by AIESEC.",
-      tags: ["Hackathon", "AIESEC", "Finalist"],
-      icon: <FaCrown className="text-4xl" />,
+        "Earned a Golden Badge in Java and C++ on HackerRank for consistent problem-solving and skill demonstration.",
+      tags: ["Coding", "Java", "C++"],
+      icon: <FaLaptopCode className="text-yellow-600 text-4xl" />,
       color: "from-yellow-400/20 to-yellow-600/10",
     },
     {
-      title: "ABHIBYAKTI 2K20 – Essay Competition",
+      title: "Top 50% s1 Rank - University",
       description:
-        "Runner-up (2nd Position) in an essay writing competition at IIMT Group of Colleges.",
-      tags: ["Essay Writing", "Creativity", "Competition"],
-      icon: <FaMedal className="text-4xl" />,
-      color: "from-red-400/20 to-red-600/10",
-    },
-    {
-      title: "Code-A-Haunt Hackathon – LPU",
-      description:
-        "Secured 5th rank in the Code-A-Haunt Hackathon held at Lovely Professional University.",
-      tags: ["Hackathon", "Coding", "Problem Solving"],
-      icon: <FaLaptopCode className="text-4xl" />,
+        "Achieved a Top 50% Student Leader (s1) rank across the university based on overall academic and extracurricular performance.",
+      tags: ["Academic", "Leadership", "University"],
+      icon: <FaMedal className="text-blue-600 text-4xl" />,
       color: "from-blue-400/20 to-blue-600/10",
     },
+    {
+      title: "U-19 District Cricket Champion",
+      description:
+        "Winner of the Under-19 District Regional Cricket Tournament held in Bihar, showcasing leadership and sportsmanship.",
+      tags: ["Cricket", "Sports", "Winner"],
+      icon: <FaCrown className="text-green-600 text-4xl" />,
+      color: "from-green-400/20 to-green-600/10",
+    },
   ];
+  
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
