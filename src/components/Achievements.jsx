@@ -73,19 +73,37 @@ const Achievements = () => {
       id="achievements"
       className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
     >
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-16"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ margin: "0px 0px -25% 0px" }}
-      >
-        My{" "}
-        <span className="bg-gradient-to-r from-yellow-500 via-red-500 to-blue-500 bg-clip-text text-transparent">
-          Achievements
-        </span>
-      </motion.h1>
+      {/* Title with Right-Aligned Text and Animated Line */}
+      <div className="relative z-10 container mx-auto px-6 mb-16">
+        <div className="max-w-4xl ml-auto">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-right mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          >
+            My{" "}
+            <span className="bg-gradient-to-r from-yellow-500 via-red-500 to-blue-500 bg-clip-text text-transparent">
+              Achievements
+            </span>
+          </motion.h1>
 
+          <motion.div
+            className="h-1 bg-gradient-to-l from-yellow-500 to-transparent ml-auto max-w-xs"
+            variants={{
+              hidden: { width: 0 },
+              visible: { width: "100%" },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          />
+        </div>
+      </div>
+
+      {/* Achievements Grid */}
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {achievements.map((achievement, index) => (
           <motion.div

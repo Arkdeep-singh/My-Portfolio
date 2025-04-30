@@ -11,7 +11,7 @@ const Certificates = () => {
       tags: ["Completion", "Course", "Achievement"],
       link: "https://drive.google.com/file/d/1zuilmW466uumvlN-vT1jElBmF1lJRac-/view?usp=drivesdk",
       iconColor: "text-green-600",
-      buttonColor: "bg-green-600 hover:bg-green-700", // Added button color
+      buttonColor: "bg-green-600 hover:bg-green-700",
     },
     {
       title: "Generative AI with Large Language Models",
@@ -70,19 +70,37 @@ const Certificates = () => {
       id="certificates"
       className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
     >
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-16"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ margin: "0px 0px -25% 0px" }}
-      >
-        My{" "}
-        <span className="bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Certificates
-        </span>
-      </motion.h1>
+      {/* Title with Left-Aligned Text and Animated Line */}
+      <div className="relative z-10 container mx-auto px-6 mb-16">
+        <div className="max-w-4xl">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold text-left mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          >
+            My{" "}
+            <span className="bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Certificates
+            </span>
+          </motion.h1>
 
+          <motion.div
+            className="h-1 bg-gradient-to-r from-green-600 to-transparent max-w-xs"
+            variants={{
+              hidden: { width: 0 },
+              visible: { width: "100%" },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            viewport={{ margin: "0px 0px -25% 0px" }}
+          />
+        </div>
+      </div>
+
+      {/* Certificates Grid */}
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {certificates.map((cert, index) => (
           <motion.div
