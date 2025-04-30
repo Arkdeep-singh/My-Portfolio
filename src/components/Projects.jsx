@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight, FaGithub } from "react-icons/fa";
 
@@ -43,53 +43,90 @@ const projects = [
 
 const Projects = () => {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState("right");
+  const constraintsRef = useRef(null);
 
-  const nextProject = () => setIndex((prev) => (prev + 1) % projects.length);
-  const prevProject = () =>
-    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const navigate = (newDirection) => {
+    setDirection(newDirection);
+    setIndex((prev) =>
+      newDirection === "right"
+        ? (prev + 1) % projects.length
+        : (prev - 1 + projects.length) % projects.length
+    );
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const projectVariants = {
+    enter: (direction) => ({
+      x: direction === "right" ? 200 : -200,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
+    exit: (direction) => ({
+      x: direction === "right" ? -200 : 200,
+      opacity: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    }),
+  };
 
   return (
-    <section id="projects" className="py-24 bg-gray-50">
-      {/* Section Heading with Left-Aligned Title and Gradient Line */}
+    <section id="projects" className="py-24 bg-gray-50" ref={constraintsRef}>
       <div className="relative z-10 container mx-auto px-6 mb-16">
         <div className="max-w-4xl mr-auto">
           <motion.h2
             className="text-4xl md:text-5xl font-bold text-left mb-4"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: "0px 0px -25% 0px" }}
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ margin: "0px 0px -25% 0px", once: false }}
           >
             My <span className="text-blue-600">Projects</span>
           </motion.h2>
+
           <motion.div
             className="h-1 bg-gradient-to-r from-blue-500 to-transparent mr-auto max-w-xs"
             initial={{ width: 0 }}
             whileInView={{ width: "100%" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            viewport={{ margin: "0px 0px -25% 0px" }}
+            viewport={{ margin: "0px 0px -25% 0px", once: false }}
           />
         </div>
       </div>
 
       <div className="relative container mx-auto px-6 max-w-7xl">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.6 }}
+            custom={direction}
+            variants={projectVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="flex flex-col md:flex-row items-center md:items-start gap-10"
           >
-            {/* Project Image Outside Card (Left Side) */}
-            <img
+            <motion.img
               src={projects[index].image}
               alt={projects[index].title}
               className="w-full md:w-[45%] h-80 md:h-[26rem] object-cover rounded-3xl shadow-2xl"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.4 }}
             />
 
-            {/* Project Details (Right Side) */}
-            <div className="bg-white w-full md:w-[55%] p-10 rounded-2xl shadow-xl">
+            <motion.div
+              className="bg-white w-full md:w-[55%] p-10 rounded-2xl shadow-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               <h2 className="text-3xl font-semibold text-gray-800 mb-6">
                 {projects[index].title}
               </h2>
@@ -112,36 +149,32 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white bg-gray-800 hover:bg-gray-900 px-5 py-3 rounded-lg text-base font-medium shadow-lg"
                 whileHover={{ scale: 1.05 }}
-                animate={{
-                  y: [0, -2, 0, 2, 0],
-                }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                whileTap={{ scale: 0.95 }}
               >
                 <FaGithub className="text-lg" />
                 <span className="whitespace-nowrap">View on GitHub</span>
               </motion.a>
-            </div>
+            </motion.div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Arrows */}
         <div className="flex justify-center items-center gap-10 mt-14">
-          <button
-            onClick={prevProject}
-            className="bg-gray-100 hover:bg-gray-200 p-4 rounded-full shadow-md transition"
+          <motion.button
+            onClick={() => navigate("left")}
+            className="bg-gray-100 hover:bg-gray-200 p-4 rounded-full shadow-md"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <FaArrowLeft className="text-2xl text-gray-700" />
-          </button>
-          <button
-            onClick={nextProject}
-            className="bg-gray-100 hover:bg-gray-200 p-4 rounded-full shadow-md transition"
+          </motion.button>
+          <motion.button
+            onClick={() => navigate("right")}
+            className="bg-gray-100 hover:bg-gray-200 p-4 rounded-full shadow-md"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <FaArrowRight className="text-2xl text-gray-700" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>
