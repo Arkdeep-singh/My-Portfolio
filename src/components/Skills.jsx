@@ -47,6 +47,27 @@ const skillsData = [
   },
 ];
 
+// Animation container for staggered inner animations
+const containerVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (customDelay) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: customDelay,
+      duration: 0.6,
+      ease: "easeOut",
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+    },
+  }),
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const SkillsSection = () => {
   return (
     <section
@@ -73,16 +94,23 @@ const SkillsSection = () => {
           <motion.div
             key={index}
             className="bg-white/70 backdrop-blur-lg shadow-xl rounded-3xl p-8 hover:shadow-2xl transition duration-300 border border-gray-200 hover:scale-[1.03] hover:border-blue-400"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            custom={delay}
           >
-            <div className="flex justify-center text-5xl mb-4">{icon}</div>
-            <h3 className="text-2xl font-bold text-gray-800 text-center mb-4">
-              {title}
-            </h3>
+            <motion.div className="flex justify-center text-5xl mb-4" variants={childVariants}>
+              {icon}
+            </motion.div>
 
-            <div className="w-full bg-gray-300/50 rounded-full h-3 mb-4">
+            <motion.h3
+              className="text-2xl font-bold text-gray-800 text-center mb-4"
+              variants={childVariants}
+            >
+              {title}
+            </motion.h3>
+
+            <motion.div className="w-full bg-gray-300/50 rounded-full h-3 mb-4" variants={childVariants}>
               <motion.div
                 className="bg-gradient-to-r from-blue-500 to-indigo-500 h-3 rounded-full"
                 style={{ width }}
@@ -90,11 +118,14 @@ const SkillsSection = () => {
                 animate={{ width }}
                 transition={{ duration: 1.2 }}
               />
-            </div>
+            </motion.div>
 
-            <p className="text-gray-700 text-center leading-relaxed text-[1rem]">
+            <motion.p
+              className="text-gray-700 text-center leading-relaxed text-[1rem]"
+              variants={childVariants}
+            >
               {skills}
-            </p>
+            </motion.p>
           </motion.div>
         ))}
       </div>
