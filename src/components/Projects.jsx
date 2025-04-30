@@ -8,7 +8,7 @@ const projects = [
     description:
       "A fully functional eCommerce platform built using PHP, JavaScript, and MySQL. It features dynamic product listings, secure user authentication, shopping cart functionality, order processing, and an admin dashboard for inventory and order management. The platform offers a seamless and responsive user experience, allowing customers to browse products, add them to cart, and complete purchases with ease.",
     tech: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
-    link: "https://github.com/GovindKumar04/eCommerce-Platform",
+    link: "https://github.com/RishiBakshii/mern-ecommerce",
     image:
       "http://unblast.com/wp-content/uploads/2020/04/E-Commerce-App-Template-1.jpg",
   },

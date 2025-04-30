@@ -24,11 +24,11 @@ const Certificates = () => {
       buttonColor: "bg-blue-600 hover:bg-blue-700",
     },
     {
-      title: "The World of Computer Networking",
+      title: "HTML, CSS, and Javascript for Web Developers",
       description:
-        "Completed an in-depth course on networking concepts including protocols, OSI layers, and real-world applications.",
-      tags: ["Udemy", "Online Learning", "Skill Development"],
-      link: "https://drive.google.com/file/d/1MpXLSjROLmMNxphvjKGf1mVtX6RmDzVW/view?usp=drivesdk",
+        " Completed a course on web development fundamentals, focusing on HTML, CSS, and JavaScript. Gained hands-on experience in building responsive web pages and interactive user interfaces. This course provided a solid foundation for front-end development and enhanced my web design skills. ",
+      tags: [ "Online Learning", "Skill Development"],
+      link: "https://drive.google.com/file/d/176-hA8il4IKcR-zdgCF2IGIHeyR570do/view",
       iconColor: "text-purple-600",
       buttonColor: "bg-purple-600 hover:bg-purple-700",
     },
