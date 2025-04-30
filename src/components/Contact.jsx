@@ -59,14 +59,23 @@ const Contact = () => {
                 whileInView="visible"
                 viewport={{ margin: "0px 0px -25% 0px" }}
               >
-                {introText.split("").map((char, index) => (
-                  <motion.span
-                    key={index}
-                    className="inline-block"
-                    variants={letterVariants}
+                {introText.split(" ").map((word, wordIndex) => (
+                  <span
+                    key={wordIndex}
+                    className="inline-block whitespace-nowrap mr-2"
                   >
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
+                    {word.split("").map((char, charIndex) => (
+                      <motion.span
+                        key={charIndex}
+                        className="inline-block"
+                        variants={letterVariants}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                    {/* Add non-breaking space after each word */}
+                    {wordIndex !== introText.split(" ").length - 1 && "\u00A0"}
+                  </span>
                 ))}
               </motion.div>
             </div>
