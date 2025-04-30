@@ -17,7 +17,7 @@ const projects = [
     description:
       "An interactive e-learning dashboard designed to manage and track 100+ courses efficiently. Built with Node.js, Express.js, and MongoDB, it includes real-time discussion features enabling instant student-instructor communication for 500+ users, reducing response delays by 40%. The interface is optimized with Tailwind CSS to improve usability, cutting navigation effort by 30% and boosting learner engagement by 60%.",
     tech: ["Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JavaScript"],
-    link: "https://github.com/GovindKumar04/e-learning-dashboard",
+    link: "https://github.com/Abhishek6725/E-learning--BackendProject",
     image:
       "https://mir-s3-cdn-cf.behance.net/project_modules/fs/d2e21d165015155.640046fb9fc22.jpg",
   },
