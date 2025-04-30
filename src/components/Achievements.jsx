@@ -1,115 +1,159 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaCrown,
-  FaMedal,
-  FaLaptopCode,
-} from "react-icons/fa";
+import { FaCrown, FaMedal, FaLaptopCode } from "react-icons/fa";
 
 const Achievements = () => {
   const achievements = [
     {
       title: "Hack-A-Throne 2024 by AIESEC",
-      description: "Reached the final round of Hack-A-Throne 2024, organized by AIESEC.",
+      description:
+        "Reached the final round of Hack-A-Throne 2024, organized by AIESEC.",
       tags: ["Hackathon", "AIESEC", "Finalist"],
       link: "#",
-      icon: <FaCrown className="inline-block mr-2 text-yellow-600" />,
+      icon: <FaCrown className="text-4xl" />,
+      color: "from-yellow-400/20 to-yellow-600/10",
+      button: "bg-yellow-500 hover:bg-yellow-600",
     },
     {
       title: "ABHIBYAKTI 2K20 – Essay Competition",
-      description: "Runner-up (2nd Position) in an essay writing competition at IIMT Group of Colleges.",
+      description:
+        "Runner-up (2nd Position) in an essay writing competition at IIMT Group of Colleges.",
       tags: ["Essay Writing", "Creativity", "Competition"],
       link: "#",
-      icon: <FaMedal className="inline-block mr-2 text-red-500" />,
+      icon: <FaMedal className="text-4xl" />,
+      color: "from-red-400/20 to-red-600/10",
+      button: "bg-red-500 hover:bg-red-600",
     },
     {
       title: "Code-A-Haunt Hackathon – LPU",
-      description: "Secured 5th rank in the Code-A-Haunt Hackathon held at Lovely Professional University.",
+      description:
+        "Secured 5th rank in the Code-A-Haunt Hackathon held at Lovely Professional University.",
       tags: ["Hackathon", "Coding", "Problem Solving"],
       link: "#",
-      icon: <FaLaptopCode className="inline-block mr-2 text-blue-600" />,
+      icon: <FaLaptopCode className="text-4xl" />,
+      color: "from-blue-400/20 to-blue-600/10",
+      button: "bg-blue-500 hover:bg-blue-600",
     },
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const getTagColor = (tag) => {
+    switch (tag) {
+      case "Hackathon":
+        return "bg-yellow-100 text-yellow-800";
+      case "Essay Writing":
+        return "bg-red-100 text-red-800";
+      case "Coding":
+        return "bg-blue-100 text-blue-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
   return (
-    <section id="achievements" className="py-20 bg-gradient-to-br from-white via-gray-100 to-white">
+    <section
+      id="achievements"
+      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+    >
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-12"
+        className="text-4xl md:text-5xl font-bold text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        viewport={{ margin: "0px 0px -25% 0px" }}
       >
-        My <span className="text-blue-600">Achievements</span>
+        My{" "}
+        <span className="bg-gradient-to-r from-yellow-500 via-red-500 to-blue-500 bg-clip-text text-transparent">
+          Achievements
+        </span>
       </motion.h1>
 
-      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {achievements.map((achievement, index) => (
           <motion.div
             key={index}
-            className="bg-white rounded-2xl shadow-xl p-8 text-center hover:shadow-2xl transform hover:scale-105 transition duration-300"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
+            className={`bg-gradient-to-br ${achievement.color} rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden`}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ margin: "0px 0px -25% 0px" }}
           >
-            <div className="mb-4 flex justify-center">
-              {achievement.icon}
-            </div>
+            <motion.div
+              className="mb-6 flex justify-center"
+              variants={itemVariants}
+            >
+              <div className="p-4 bg-white/90 rounded-full shadow-lg">
+                <motion.div
+                  className={achievement.button
+                    .replace("bg", "text")
+                    .replace(" hover:bg", "")}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {achievement.icon}
+                </motion.div>
+              </div>
+            </motion.div>
 
-            {/* Title Animation */}
             <motion.h2
-              className="text-xl font-semibold text-gray-800 mb-3"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-xl font-bold text-gray-800 mb-4"
+              variants={itemVariants}
             >
               {achievement.title}
             </motion.h2>
 
-            {/* Description Animation */}
             <motion.p
-              className="text-gray-600 mb-5 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-gray-600 mb-6 leading-relaxed"
+              variants={itemVariants}
             >
               {achievement.description}
             </motion.p>
 
-            {/* Tags Animation */}
             <motion.div
-              className="flex justify-center flex-wrap gap-2 mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              className="flex flex-wrap gap-2 mb-6"
+              variants={itemVariants}
             >
               {achievement.tags.map((tag, idx) => (
                 <motion.span
                   key={idx}
-                  className="bg-blue-100 text-blue-700 text-xs font-medium py-1 px-3 rounded-full"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.9 + idx * 0.2 }}
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getTagColor(
+                    tag
+                  )}`}
+                  variants={itemVariants}
                 >
                   {tag}
                 </motion.span>
               ))}
             </motion.div>
 
-            {/* Button Animation */}
             <motion.a
               href={achievement.link}
               target="_blank"
               rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center w-full py-3 font-medium text-white ${achievement.button} rounded-lg transition-all`}
+              variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-blue-700 transition duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
             >
-              View More
+              View Details
             </motion.a>
           </motion.div>
         ))}
