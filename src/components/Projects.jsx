@@ -31,6 +31,15 @@ const projects = [
       "https://user-images.githubusercontent.com/95934322/211133418-cfeee594-a5b3-4e8f-ae28-6202dbf7e342.jpeg",
   },
   {
+    title: "LMS_BoardInfinity_Project",
+    description:
+      "A Learning Management System (LMS) built using C++ that manages student records, course enrollments, and grading functionalities. Designed as a console-based application, it emphasizes object-oriented programming principles and file handling, offering a foundational tool for academic administration.",
+    tech: ["C++"],
+    link: "https://github.com/GovindKumar04/LMS_BoardInfinity_Project",
+    image:
+      "https://th.bing.com/th/id/OIP.4be_r1zdQ_dfrFFHPS_P2wHaET?rs=1&pid=ImgDetMain",
+  },  
+  {
     title: "Pong Game",
     description:
       "A retro-style Pong game built using Python’s Turtle module. It recreates the classic 2D game experience with responsive paddle control, scoring system, and game-over detection — a beginner-friendly project to demonstrate interactive UI design in Python.",
