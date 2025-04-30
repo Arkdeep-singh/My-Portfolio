@@ -17,9 +17,9 @@ const Certificates = () => {
     {
       title: "Mastering Data Structures & Algorithms using C and C++",
       description:
-        "Completed an advanced AI course, covering LLM architectures, prompt engineering, and practical implementation scenarios.",
+        "Completed a comprehensive course on data structures and algorithms using C and C++. Gained proficiency in implementing various data structures, algorithmic techniques, and problem-solving strategies. This course enhanced my programming skills and prepared me for technical interviews. ", 
       tags: ["Achievement", "Excellence", "Recognition"],
-      link: "https://drive.google.com/file/d/1zx36opz-EaGAIopejuuWR7Mxt86F_IpL/view?usp=drivesdk",
+      link: "https://drive.google.com/file/d/1tgwOBZDxchDBMITUpkpUiCy_9scQKCOH/view",
       iconColor: "text-blue-600",
       buttonColor: "bg-blue-600 hover:bg-blue-700",
     },
